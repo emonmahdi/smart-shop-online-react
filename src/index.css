@@ -1,1 +1,72 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
+
+@theme {
+    --color-primary: #0F172A;
+    --color-secondary: #F97316; 
+    --spacing-18: 4.5rem;
+  } */
+  @import "tailwindcss";
+
+  /* Custom CSS variables and theme overrides */
+  @theme {
+    --color-primary: #0F172A;
+    --color-secondary: #F97316;
+    --color-accent: #22C55E;
+    --color-bg: #F8FAFC;
+    --color-text: #334155;
+  
+    --spacing-18: 4.5rem;
+  }
+  
+  /* Custom base styles */
+  @layer base {
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: 'Inter', sans-serif;
+    }
+  
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+  
+    a:hover {
+      color: var(--color-secondary);
+    }
+  }
+  
+  /* Custom component styles */
+  @layer components {
+    .btn-primary {
+      @apply bg-primary text-white font-semibold py-2 px-4 rounded hover:bg-secondary transition;
+    }
+  
+    .btn-secondary {
+      @apply bg-secondary text-white font-semibold py-2 px-4 rounded hover:bg-primary transition;
+    }
+  
+    .card {
+      @apply bg-white rounded-lg shadow-md p-6;
+    }
+  }
+  
+  /* Custom utilities */
+  @layer utilities {
+    .text-primary {
+      color: var(--color-primary) !important;
+    }
+  
+    .text-secondary {
+      color: var(--color-secondary) !important;
+    }
+  
+    .bg-primary {
+      background-color: var(--color-primary) !important;
+    }
+  
+    .bg-secondary {
+      background-color: var(--color-secondary) !important;
+    }
+  }
+  
