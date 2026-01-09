@@ -39,7 +39,8 @@ const HeroBanner = () => {
         {/* Heading */}
         <div className="text-center max-w-2xl mx-auto">
           <h1 className="text-3xl md:text-5xl font-bold">
-            Smart Online Shop – Your Trusted Destination  
+            Smart <span className="text-secondary">Online Shop</span> – Your
+            Trusted Destination
           </h1>
           <p className="mt-4 text-gray-200">
             Discover trending products, exclusive deals, and top-quality items
