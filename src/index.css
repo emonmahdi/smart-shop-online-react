@@ -61,4 +61,19 @@
       color: var(--color-secondary) !important;
     } 
   }
+
+  @layer utilities {
+    @keyframes logoSlide {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+  
+    .animate-logoSlide {
+      animation: logoSlide 25s linear infinite;
+    }
+  }
   

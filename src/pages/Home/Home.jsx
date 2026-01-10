@@ -3,6 +3,7 @@ import HeroBanner from "../../components/Hero/HeroBanner";
 import FlashSale from "../../components/FlashSale";
 import TopCategories from "./TopCategories";
 import MostPopularProduct from "./MostPopularProduct";
+import CompanyLogos from "./CompanyLogos";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <FlashSale />
       <TopCategories />
       <MostPopularProduct />
+      <CompanyLogos />
     </div>
   );
 };
