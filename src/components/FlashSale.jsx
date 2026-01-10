@@ -3,7 +3,7 @@ import img1 from '../assets/d1.jpg'
 import img2 from '../assets/d2.jpg'
 import img3 from '../assets/d3.jpg'
 import img4 from "../assets/d4.jpg";
-import SingleProductCard from "./FlashSaleCard";
+import SingleProductCard from "./ui/SingleProductCard";
 
 const FlashSale = () => {
   const products = [
@@ -38,7 +38,7 @@ const FlashSale = () => {
   ];
 
   return (
-    <section className="bg-bg py-12">
+    <section className="bg-gray-200 py-12">
       <div className="max-w-7xl mx-auto px-4">
         {/* Top Header */}
         <div className="flex items-center justify-between mb-8">

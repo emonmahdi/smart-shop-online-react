@@ -3,12 +3,13 @@ import { FaPlus } from "react-icons/fa";
 const SingleProductCard = ({ item }) => {
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition group">
+      
       {/* Image */}
-      <div className="relative h-64 overflow-hidden">
+      <div className="relative h-64 bg-gray-100 flex items-center justify-center overflow-hidden">
         <img
           src={item.image}
           alt={item.title}
-          className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+          className="max-w-full max-h-full object-contain transition duration-500 group-hover:scale-105"
         />
 
         {/* Offer Badge */}
@@ -24,7 +25,9 @@ const SingleProductCard = ({ item }) => {
         </h3>
 
         <div className="flex items-center justify-between">
-          <span className="text-secondary font-bold text-lg">{item.price}</span>
+          <span className="text-secondary font-bold text-lg">
+            {item.price}
+          </span>
 
           <button className="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary transition">
             <FaPlus size={14} />
