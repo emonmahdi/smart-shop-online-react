@@ -1,9 +1,8 @@
 import { FaPlus } from "react-icons/fa";
 
-const FlashSaleCard = ({ item }) => {
+const SingleProductCard = ({ item }) => {
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition group">
-      
       {/* Image */}
       <div className="relative h-64 overflow-hidden">
         <img
@@ -25,9 +24,7 @@ const FlashSaleCard = ({ item }) => {
         </h3>
 
         <div className="flex items-center justify-between">
-          <span className="text-secondary font-bold text-lg">
-            {item.price}
-          </span>
+          <span className="text-secondary font-bold text-lg">{item.price}</span>
 
           <button className="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary transition">
             <FaPlus size={14} />
@@ -38,4 +35,4 @@ const FlashSaleCard = ({ item }) => {
   );
 };
 
-export default FlashSaleCard;
+export default SingleProductCard;

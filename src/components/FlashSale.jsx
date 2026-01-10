@@ -2,8 +2,8 @@ import { FaArrowRight } from "react-icons/fa";
 import img1 from '../assets/d1.jpg'
 import img2 from '../assets/d2.jpg'
 import img3 from '../assets/d3.jpg'
-import img4 from '../assets/d4.jpg' 
-import FlashSaleCard from "./FlashSaleCard";
+import img4 from "../assets/d4.jpg";
+import SingleProductCard from "./FlashSaleCard";
 
 const FlashSale = () => {
   const products = [
@@ -19,7 +19,7 @@ const FlashSale = () => {
       title: "Smart Watch Pro",
       price: "$129",
       offer: "-40%",
-      image:img2,
+      image: img2,
     },
     {
       id: 3,
@@ -40,7 +40,6 @@ const FlashSale = () => {
   return (
     <section className="bg-bg py-12">
       <div className="max-w-7xl mx-auto px-4">
-        
         {/* Top Header */}
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-primary">
@@ -55,7 +54,7 @@ const FlashSale = () => {
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {products.map((item) => (
-            <FlashSaleCard key={item.id} item={item} />
+            <SingleProductCard key={item.id} item={item} />
           ))}
         </div>
       </div>
