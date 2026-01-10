@@ -6,7 +6,7 @@ import {
   FaTimes,
   FaChevronDown,
 } from "react-icons/fa";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -20,7 +20,10 @@ const Navbar = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="text-2xl font-bold text-primary">
-            Smart<span className="text-secondary">Shop</span>
+            <Link to={"/"}>
+              {" "}
+              Smart<span className="text-secondary">Shop</span>
+            </Link>
           </div>
 
           {/* Desktop Menu */}

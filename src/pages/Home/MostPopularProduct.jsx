@@ -1,8 +1,8 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
-import img1 from "../../assets/d1.jpg";
-import img2 from "../../assets/d2.jpg";
-import img3 from "../../assets/d3.jpg";
+import img1 from "../../assets/d1.png";
+import img2 from "../../assets/d2.png";
+import img3 from "../../assets/d3.png";
 import img4 from "../../assets/d4.jpg";
 import img5 from "../../assets/blutooth.png";
 import img6 from "../../assets/mobile.png";
