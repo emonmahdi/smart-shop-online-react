@@ -1,9 +1,9 @@
+import { Link } from "react-router";
 import { FaPlus } from "react-icons/fa";
 
 const SingleProductCard = ({ item }) => {
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition group">
-      
       {/* Image */}
       <div className="relative h-64 bg-gray-100 flex items-center justify-center overflow-hidden">
         <img
@@ -20,14 +20,15 @@ const SingleProductCard = ({ item }) => {
 
       {/* Content */}
       <div className="p-4">
-        <h3 className="font-semibold text-lg text-primary mb-2">
+        <Link
+          to={`/product/${item.id}`} // Adjust route as needed
+          className="font-semibold text-lg text-primary mb-2 block hover:text-secondary transition"
+        >
           {item.title}
-        </h3>
+        </Link>
 
         <div className="flex items-center justify-between">
-          <span className="text-secondary font-bold text-lg">
-            {item.price}
-          </span>
+          <span className="text-secondary font-bold text-lg">{item.price}</span>
 
           <button className="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary transition">
             <FaPlus size={14} />
