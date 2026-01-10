@@ -62,7 +62,7 @@ const Navbar = () => {
                   (item) => (
                     <li key={item}>
                       <NavLink
-                        to={`/category/${item}`}
+                        to={`/product`}
                         className="block px-4 py-2 hover:bg-bg hover:text-secondary transition"
                       >
                         {item.charAt(0).toUpperCase() + item.slice(1)}

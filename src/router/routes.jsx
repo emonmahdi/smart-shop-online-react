@@ -4,6 +4,8 @@ import Home from "../pages/Home/Home";
 import Blog from "../pages/Blog/Blog";
 import Contact from "../pages/Contact/Contact";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
+import ProductPage from "../pages/Product/ProductPage";
+import Shop from "../pages/Product/Shop";
 
 const routes = createBrowserRouter([
   {
@@ -25,6 +27,10 @@ const routes = createBrowserRouter([
       {
         path: "/product/:id",
         Component: ProductDetails,
+      },
+      {
+        path: "/product",
+        Component: Shop,
       },
     ],
   },
