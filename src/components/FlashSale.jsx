@@ -1,9 +1,11 @@
-import { FaArrowRight } from "react-icons/fa"; 
-import img1 from '../assets/d1.jpg'
-import img2 from '../assets/d2.jpg'
-import img3 from '../assets/d3.jpg'
+import { FaArrowRight } from "react-icons/fa";
+import img1 from "../assets/d1.jpg";
+import img2 from "../assets/d2.jpg";
+import img3 from "../assets/d3.jpg";
 import img4 from "../assets/d4.jpg";
 import SingleProductCard from "./ui/SingleProductCard";
+import SectionHeading from "./ui/SectionHeading";
+import Button from "./ui/Button";
 
 const FlashSale = () => {
   const products = [
@@ -42,13 +44,11 @@ const FlashSale = () => {
       <div className="max-w-7xl mx-auto px-4">
         {/* Top Header */}
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary">
-            Flash Sale
-          </h2>
+          <SectionHeading title={"Flash Sale"} />
 
-          <button className="flex items-center gap-2 bg-primary text-white px-5 py-2 rounded-full hover:bg-secondary transition">
-            View All <FaArrowRight size={14} />
-          </button>
+          <Button variant="primary" icon={<FaArrowRight size={14} />}>
+            View All
+          </Button>
         </div>
 
         {/* Cards */}

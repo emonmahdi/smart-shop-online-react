@@ -11,6 +11,7 @@ import img8 from "../../assets/mouse.png";
 
 import SectionHeading from "../../components/ui/SectionHeading";
 import SingleProductCard from "../../components/ui/SingleProductCard";
+import Button from "../../components/ui/Button";
 
 const products = [
   {
@@ -82,9 +83,9 @@ const MostPopularProduct = () => {
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla nunc in molestie feugiat. Nunc auctor consectetur elit, quis pulvina."
             }
           />
-          <button className="flex items-center gap-2 bg-primary text-white px-5 py-2 rounded-full hover:bg-secondary transition">
-            View All <FaArrowRight size={14} />
-          </button>
+          <Button variant="primary" icon={<FaArrowRight size={14} />}>
+            View All
+          </Button>
         </div>
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
