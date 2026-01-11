@@ -12,28 +12,28 @@ const FlashSale = () => {
     {
       id: 1,
       title: "Wireless Headphone",
-      price: "$79",
+      price: 79,
       offer: "-30%",
       image: img1,
     },
     {
       id: 2,
       title: "Smart Watch Pro",
-      price: "$129",
+      price: 129,
       offer: "-40%",
       image: img2,
     },
     {
       id: 3,
       title: "Bluetooth Speaker",
-      price: "$59",
+      price: 59,
       offer: "-25%",
       image: img3,
     },
     {
       id: 4,
       title: "Gaming Mouse",
-      price: "$39",
+      price: 39,
       offer: "-35%",
       image: img4,
     },
@@ -53,8 +53,8 @@ const FlashSale = () => {
 
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((item) => (
-            <SingleProductCard key={item.id} item={item} />
+          {products.map((product) => (
+            <SingleProductCard key={product.id} product={product} />
           ))}
         </div>
       </div>

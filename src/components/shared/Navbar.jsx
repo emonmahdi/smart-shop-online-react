@@ -103,12 +103,14 @@ const Navbar = () => {
           {/* Right Icons */}
           <div className="flex items-center gap-4">
             {/* Cart */}
-            <button className="relative text-primary hover:text-secondary transition">
-              <FaShoppingCart size={20} />
-              <span className="absolute -top-2 -right-2 bg-secondary text-white text-xs px-1.5 rounded-full">
-                2
-              </span>
-            </button>
+            <Link to="/cart">
+              <button className="relative text-primary hover:text-secondary cursor-pointer transition">
+                <FaShoppingCart size={20} />
+                <span className="absolute -top-2 -right-2 bg-secondary text-white text-xs px-1.5 rounded-full">
+                  2
+                </span>
+              </button>
+            </Link>
 
             {/* User Dropdown */}
             <div

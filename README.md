@@ -74,6 +74,9 @@ Frontend Developer (React & Next.js)
 * 📧 Email: [your-email@example.com](mailto:your-email@example.com)
 * 🌐 LinkedIn: your-linkedin-profile
 
- 
+
+### Figma File:
+
+https://www.figma.com/design/ESRGZzDBUiWmGepeAQVZFk/Online-shop?node-id=3-27&t=vEjp8dGyCk0CI1Na-0
 
 --- 

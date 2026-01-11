@@ -1,7 +1,9 @@
 import { Link } from "react-router";
 import { FaPlus } from "react-icons/fa";
+import { useCart } from "../../Context/CartContext";
 
 const ProductCard = ({ product }) => {
+  const { addToCart } = useCart();
   return (
     <div className="bg-white rounded-xl shadow hover:shadow-lg transition w-72 flex-shrink-0">
       {/* Image */}
@@ -30,7 +32,10 @@ const ProductCard = ({ product }) => {
         <div className="flex items-center justify-between mt-3">
           <span className="font-bold text-primary">${product.price}</span>
 
-          <button className="p-2 bg-secondary text-white rounded-full hover:scale-105 transition">
+          <button
+            onClick={() => addToCart(product)}
+            className="p-2 bg-secondary text-white rounded-full cursor-pointer hover:scale-105 transition"
+          >
             <FaPlus size={12} />
           </button>
         </div>
