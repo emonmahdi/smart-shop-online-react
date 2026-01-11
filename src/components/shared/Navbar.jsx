@@ -7,12 +7,16 @@ import {
   FaChevronDown,
 } from "react-icons/fa";
 import { Link, NavLink } from "react-router";
+import { useCart } from "../../Context/CartContext";
 
 const Navbar = () => {
+  const { cart } = useCart();
   const [mobileMenu, setMobileMenu] = useState(false);
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [userOpen, setUserOpen] = useState(false);
   const [mobileCategoryOpen, setMobileCategoryOpen] = useState(false);
+
+  const cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow">
@@ -103,14 +107,27 @@ const Navbar = () => {
           {/* Right Icons */}
           <div className="flex items-center gap-4">
             {/* Cart */}
+            {/* Cart */}
             <Link to="/cart">
+              <button className="relative text-primary hover:text-secondary cursor-pointer transition">
+                <FaShoppingCart size={20} />
+
+                {cartCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-secondary text-white text-xs min-w-[18px] h-[18px] flex items-center justify-center rounded-full">
+                    {cartCount}
+                  </span>
+                )}
+              </button>
+            </Link>
+
+            {/* <Link to="/cart">
               <button className="relative text-primary hover:text-secondary cursor-pointer transition">
                 <FaShoppingCart size={20} />
                 <span className="absolute -top-2 -right-2 bg-secondary text-white text-xs px-1.5 rounded-full">
                   2
                 </span>
               </button>
-            </Link>
+            </Link> */}
 
             {/* User Dropdown */}
             <div
