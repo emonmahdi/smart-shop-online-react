@@ -9,29 +9,29 @@ const SingleProductCard = ({ product }) => {
       {/* Image */}
       <div className="relative h-64 bg-gray-100 flex items-center justify-center overflow-hidden">
         <img
-          src={product.image}
-          alt={product.title}
+          src={product?.image}
+          alt={product?.title}
           className="max-w-full max-h-full object-contain transition duration-500 group-hover:scale-105"
         />
 
         {/* Offer Badge */}
         <span className="absolute top-3 left-3 bg-secondary text-white text-sm font-semibold px-3 py-1 rounded-full">
-          {product.offer}
+          {product?.offer}
         </span>
       </div>
 
       {/* Content */}
       <div className="p-4">
         <Link
-          to={`/product/${product.id}`} // Adjust route as needed
+          to={`/product/${product?.id}`} // Adjust route as needed
           className="font-semibold text-lg text-primary mb-2 block hover:text-secondary transition"
         >
-          {product.title}
+          {product?.title}
         </Link>
 
         <div className="flex items-center justify-between">
           <span className="text-secondary font-bold text-lg">
-            {product.price}
+            {product?.price}
           </span>
 
           <button

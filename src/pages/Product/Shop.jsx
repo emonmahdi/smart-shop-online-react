@@ -1,8 +1,8 @@
-import products from "../../../public/products";
+// import products from "../../../public/products";
 import ProductPage from "./ProductPage";
 
 const Shop = () => {
-  return <ProductPage products={products} />;
+  return <ProductPage />;
 };
 
 export default Shop;
