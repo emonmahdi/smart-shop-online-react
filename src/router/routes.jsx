@@ -9,6 +9,12 @@ import Shop from "../pages/Product/Shop";
 import CartPage from "../pages/CartPage/CartPage";
 import CheckoutPage from "../pages/Checkout/CheckoutPage";
 import OrderSuccess from "../pages/OrderSuccess/OrderSuccess";
+import DashboardLayout from "../layout/DashboardLayout";
+import DashboardHome from "../pages/Dashboard/DashboardHome";
+import Products from "../pages/Dashboard/Products";
+import Orders from "../pages/Dashboard/Orders";
+import Users from "../pages/Dashboard/Users";
+import AddProducts from "../pages/Dashboard/AddProducts";
 
 const routes = createBrowserRouter([
   {
@@ -38,6 +44,20 @@ const routes = createBrowserRouter([
       { path: "cart", element: <CartPage /> },
       { path: "checkout", element: <CheckoutPage /> },
       { path: "order-success", element: <OrderSuccess /> },
+    ],
+  },
+  {
+    path: "/dashboard",
+    Component: DashboardLayout,
+    children: [
+      {
+        index: true,
+        Component: DashboardHome,
+      },
+      { path: "products", element: <Products /> },
+      { path: "orders", element: <Orders /> },
+      { path: "users", element: <Users /> },
+      { path: "products/add", element: <AddProducts /> },
     ],
   },
 ]);

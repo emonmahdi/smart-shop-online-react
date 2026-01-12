@@ -102,6 +102,18 @@ const Navbar = () => {
                 Contact Us
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-secondary"
+                    : "hover:text-secondary transition"
+                }
+              >
+                Dashboard
+              </NavLink>
+            </li>
           </ul>
 
           {/* Right Icons */}
@@ -202,6 +214,9 @@ const Navbar = () => {
             <p className="hover:text-secondary cursor-pointer">Blog</p>
 
             <p className="hover:text-secondary cursor-pointer">Contact Us</p>
+            <Link to={'/dashboard'}>
+            <p className="hover:text-secondary cursor-pointer">Dashboard</p>
+            </Link>
           </div>
         )}
       </nav>
