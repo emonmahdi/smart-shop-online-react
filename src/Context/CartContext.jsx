@@ -13,9 +13,7 @@ export const CartProvider = ({ children }) => {
 
       if (exists) {
         return prev.map((p) =>
-          p.id === product.id
-            ? { ...p, qty: p.qty + 1 }
-            : p
+          p.id === product.id ? { ...p, qty: p.qty + 1 } : p
         );
       }
 
@@ -50,10 +48,7 @@ export const CartProvider = ({ children }) => {
   const clearCart = () => setCart([]);
 
   // ✅ TOTAL PRICE (optional helper)
-  const totalPrice = cart.reduce(
-    (sum, item) => sum + item.price * item.qty,
-    0
-  );
+  const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   return (
     <CartContext.Provider

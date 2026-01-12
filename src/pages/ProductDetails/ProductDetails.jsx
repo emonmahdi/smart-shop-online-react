@@ -5,9 +5,11 @@ import thumb1 from "../../assets/d2.png";
 import thumb2 from "../../assets/d3.png";
 import thumb3 from "../../assets/d1.png";
 import { FaStar, FaMinus, FaPlus, FaShoppingCart } from "react-icons/fa";
+import { useCart } from "../../Context/CartContext";
 
 const ProductDetails = () => {
   const { id } = useParams();
+  const { addToCart } = useCart();
 
   const product = {
     id,
@@ -58,6 +60,16 @@ const ProductDetails = () => {
       );
     }
     return stars;
+  };
+
+  const handleAddToCart = () => {
+    addToCart({
+      id: product.id,
+      title: product.name,
+      price: product.price,
+      image: product.images[0],
+      qty: quantity,
+    });
   };
 
   return (
@@ -168,6 +180,7 @@ const ProductDetails = () => {
             </div>
 
             <button
+              onClick={handleAddToCart}
               className="flex items-center gap-2 bg-secondary hover:bg-secondary/90 text-white px-5 py-3 rounded-full shadow-lg transition flex-shrink-0"
               aria-label="Add to cart"
             >
