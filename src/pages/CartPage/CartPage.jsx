@@ -4,6 +4,10 @@ import { useCart } from "../../Context/CartContext";
 const CartPage = () => {
   const { cart, updateQty, removeFromCart, totalPrice } = useCart();
 
+  const shippingFee = totalPrice > 100 ? 0 : 10;
+  const tax = totalPrice * 0.05;
+  const grandTotal = totalPrice + shippingFee + tax;
+
   if (cart.length === 0) {
     return (
       <div className="container mx-auto p-6 text-center">
@@ -21,42 +25,67 @@ const CartPage = () => {
   }
 
   return (
-    <div className="container mx-auto p-6 max-w-4xl">
-      <h1 className="text-2xl font-bold mb-6">Your Cart</h1>
+    <div className="container mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-8">Shopping Cart</h1>
 
-      {/* CART ITEMS */}
-      <div className="space-y-5">
-        {cart.map((item) => (
-          <div
-            key={item.id}
-            className="flex flex-col sm:flex-row gap-4 items-center bg-white p-4 rounded-xl shadow"
-          >
-            {/* IMAGE */}
-            <img
-              src={item.image}
-              alt={item.title}
-              className="w-20 h-20 object-contain bg-gray-100 rounded"
-            />
-
-            {/* INFO */}
-            <div className="flex-1">
-              <h3 className="font-semibold text-lg">{item.title}</h3>
-              <p className="text-secondary font-bold">
-                ${item.price.toFixed(2)}
-              </p>
-
-              {/* QTY CONTROL */}
-              <div className="flex items-center gap-3 mt-2">
-                <input
-                  type="number"
-                  min="1"
-                  value={item.qty}
-                  onChange={(e) =>
-                    updateQty(item.id, e.target.value)
-                  }
-                  className="border rounded w-20 px-2 py-1 text-center focus:ring-2 focus:ring-primary outline-none"
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* ================= LEFT : CART ITEMS ================= */}
+        <div className="lg:col-span-2 space-y-4">
+          {cart.map((item) => (
+            <div
+              key={item.id}
+              className="grid grid-cols-1 sm:grid-cols-5 gap-4 items-center bg-white p-4 rounded-xl shadow"
+            >
+              {/* IMAGE */}
+              <div className="sm:col-span-1 flex justify-center">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-20 h-20 object-contain bg-gray-100 rounded"
                 />
+              </div>
 
+              {/* TITLE */}
+              <div className="sm:col-span-2">
+                <h3 className="font-semibold">{item.title}</h3>
+                <p className="text-secondary font-bold">
+                  ${item.price.toFixed(2)}
+                </p>
+              </div>
+
+              {/* QTY */}
+              <div className="sm:col-span-1 flex justify-center">
+                <div className="flex items-center border rounded overflow-hidden">
+                  {/* MINUS */}
+                  <button
+                    onClick={() =>
+                      item.qty > 1 && updateQty(item.id, item.qty - 1)
+                    }
+                    className="px-3 py-1 text-lg font-semibold bg-gray-100 hover:bg-gray-200 transition"
+                  >
+                    −
+                  </button>
+
+                  {/* QTY DISPLAY */}
+                  <span className="w-10 text-center font-medium">
+                    {item.qty}
+                  </span>
+
+                  {/* PLUS */}
+                  <button
+                    onClick={() => updateQty(item.id, item.qty + 1)}
+                    className="px-3 py-1 text-lg font-semibold bg-gray-100 hover:bg-gray-200 transition"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              {/* SUBTOTAL */}
+              <div className="sm:col-span-1 text-right">
+                <p className="font-semibold">
+                  ${(item.price * item.qty).toFixed(2)}
+                </p>
                 <button
                   onClick={() => removeFromCart(item.id)}
                   className="text-red-500 text-sm hover:underline"
@@ -65,27 +94,46 @@ const CartPage = () => {
                 </button>
               </div>
             </div>
+          ))}
+        </div>
 
-            {/* SUBTOTAL */}
-            <div className="font-semibold text-right">
-              ${(item.price * item.qty).toFixed(2)}
+        {/* ================= RIGHT : ORDER SUMMARY ================= */}
+        <div className="bg-white rounded-xl shadow p-6 h-fit lg:sticky lg:top-24">
+          <h2 className="text-xl font-bold mb-6">Order Summary</h2>
+
+          <div className="space-y-3 text-sm">
+            <div className="flex justify-between">
+              <span>Subtotal</span>
+              <span>${totalPrice.toFixed(2)}</span>
+            </div>
+
+            <div className="flex justify-between">
+              <span>Shipping</span>
+              <span>
+                {shippingFee === 0 ? "Free" : `$${shippingFee.toFixed(2)}`}
+              </span>
+            </div>
+
+            <div className="flex justify-between">
+              <span>Tax (5%)</span>
+              <span>${tax.toFixed(2)}</span>
+            </div>
+
+            <hr />
+
+            <div className="flex justify-between text-lg font-bold">
+              <span>Total</span>
+              <span>${grandTotal.toFixed(2)}</span>
             </div>
           </div>
-        ))}
-      </div>
 
-      {/* SUMMARY */}
-      <div className="mt-8 bg-gray-100 p-5 rounded-xl flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p className="text-xl font-bold">
-          Total: ${totalPrice.toFixed(2)}
-        </p>
-
-        <Link
-          to="/checkout"
-          className="bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-primary/90 transition"
-        >
-          Proceed to Checkout
-        </Link>
+          <Link
+            to="/checkout"
+            className="block mt-6 text-center bg-primary text-white py-3 rounded-full font-semibold hover:bg-primary/90 transition"
+          >
+            Proceed to Checkout
+          </Link>
+        </div>
       </div>
     </div>
   );
