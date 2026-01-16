@@ -15,6 +15,9 @@ import Products from "../pages/Dashboard/Products";
 import Orders from "../pages/Dashboard/Orders";
 import Users from "../pages/Dashboard/Users";
 import AddProducts from "../pages/Dashboard/AddProducts";
+import Login from "../pages/Auth/Login";
+import Register from "../pages/Auth/Register";
+import ProtectedRoute from "../routes/ProtectedRoute";
 
 const routes = createBrowserRouter([
   {
@@ -42,10 +45,26 @@ const routes = createBrowserRouter([
         Component: ProductPage,
       },
       { path: "cart", element: <CartPage /> },
-      { path: "checkout", element: <CheckoutPage /> },
+      {
+        path: "checkout",
+        element: (
+          <ProtectedRoute>
+            <CheckoutPage />{" "}
+          </ProtectedRoute>
+        ),
+      },
       { path: "order-success", element: <OrderSuccess /> },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "register",
+        element: <Register />,
+      },
     ],
   },
+
   {
     path: "/dashboard",
     Component: DashboardLayout,

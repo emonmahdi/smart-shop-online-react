@@ -8,9 +8,13 @@ import {
 } from "react-icons/fa";
 import { Link, NavLink } from "react-router";
 import { useCart } from "../../Context/CartContext";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
   const { cart } = useCart();
+  const { user, logout } = useAuth();
+  console.log(user);
+
   const [mobileMenu, setMobileMenu] = useState(false);
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [userOpen, setUserOpen] = useState(false);
@@ -142,28 +146,81 @@ const Navbar = () => {
             </Link> */}
 
             {/* User Dropdown */}
+            {/* User Dropdown */}
             <div
               className="relative"
               onMouseEnter={() => setUserOpen(true)}
               onMouseLeave={() => setUserOpen(false)}
             >
-              <button className="text-primary hover:text-secondary transition">
-                <FaUserCircle size={22} />
-              </button>
+              {user ? (
+                <>
+                  {/* Logged In User */}
+                  <button className="flex items-center gap-2 text-primary hover:text-secondary transition">
+                    <img
+                      src="https://i.pravatar.cc/40"
+                      alt="user"
+                      className="w-8 h-8 rounded-full border"
+                    />
+                    <span className="hidden sm:block font-medium">
+                      {user.name}
+                    </span>
+                  </button>
 
-              <ul
-                className={`absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg transition-all duration-300 ${
-                  userOpen
-                    ? "opacity-100 visible translate-y-0"
-                    : "opacity-0 invisible -translate-y-2"
-                }`}
-              >
-                <li className="px-4 py-2 hover:bg-bg transition">Profile</li>
-                <li className="px-4 py-2 hover:bg-bg transition">Orders</li>
-                <li className="px-4 py-2 text-red-500 hover:bg-bg transition">
-                  Logout
-                </li>
-              </ul>
+                  <ul
+                    className={`absolute right-0 mt-2 w-44 bg-white rounded-md shadow-lg transition-all duration-300 ${
+                      userOpen
+                        ? "opacity-100 visible translate-y-0"
+                        : "opacity-0 invisible -translate-y-2"
+                    }`}
+                  >
+                    <li className="px-4 py-2 text-sm text-gray-600">
+                      Role: <span className="font-semibold">{user.role}</span>
+                    </li>
+
+                    <li className="px-4 py-2 hover:bg-bg transition cursor-pointer">
+                      Profile
+                    </li>
+
+                    <li className="px-4 py-2 hover:bg-bg transition cursor-pointer">
+                      Orders
+                    </li>
+
+                    <li
+                      onClick={logout}
+                      className="px-4 py-2 text-red-500 hover:bg-bg transition cursor-pointer"
+                    >
+                      Logout
+                    </li>
+                  </ul>
+                </>
+              ) : (
+                <>
+                  {/* Not Logged In */}
+                  <button className="text-primary hover:text-secondary transition">
+                    <FaUserCircle size={22} />
+                  </button>
+
+                  <ul
+                    className={`absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg transition-all duration-300 ${
+                      userOpen
+                        ? "opacity-100 visible translate-y-0"
+                        : "opacity-0 invisible -translate-y-2"
+                    }`}
+                  >
+                    <Link to="/login">
+                      <li className="px-4 py-2 hover:bg-bg transition cursor-pointer">
+                        Login
+                      </li>
+                    </Link>
+
+                    <Link to="/register">
+                      <li className="px-4 py-2 hover:bg-bg transition cursor-pointer">
+                        Register
+                      </li>
+                    </Link>
+                  </ul>
+                </>
+              )}
             </div>
 
             {/* Mobile Menu Button */}
@@ -214,8 +271,8 @@ const Navbar = () => {
             <p className="hover:text-secondary cursor-pointer">Blog</p>
 
             <p className="hover:text-secondary cursor-pointer">Contact Us</p>
-            <Link to={'/dashboard'}>
-            <p className="hover:text-secondary cursor-pointer">Dashboard</p>
+            <Link to={"/dashboard"}>
+              <p className="hover:text-secondary cursor-pointer">Dashboard</p>
             </Link>
           </div>
         )}
