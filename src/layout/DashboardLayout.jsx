@@ -7,8 +7,11 @@ import {
   FaUsers,
   FaChevronDown,
 } from "react-icons/fa";
+import useAuth from "../hooks/useAuth";
 
 const DashboardLayout = () => {
+  const { user } = useAuth();
+  console.log(user);
   const [open, setOpen] = useState(false);
   const [productMenu, setProductMenu] = useState(false);
 
@@ -19,6 +22,11 @@ const DashboardLayout = () => {
          ? "bg-primary text-white font-semibold"
          : "text-gray-300 hover:bg-primary hover:text-white"
      }`;
+
+  const navClass = ({ isActive }) =>
+    `block px-4 py-2 rounded ${
+      isActive ? "bg-primary text-white" : "text-gray-300 hover:bg-primary"
+    }`;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -65,61 +73,95 @@ const DashboardLayout = () => {
             Dashboard
           </NavLink>
 
-          {/* Products Dropdown */}
-          <button
-            onClick={() => setProductMenu(!productMenu)}
-            className="flex items-center justify-between w-full px-4 py-2 rounded
+          {user?.role === "user" && (
+            <>
+              <NavLink to="/dashboard/my-orders" className={navClass}>
+                My Orders
+              </NavLink>
+              <NavLink to="/dashboard/wishlist" className={navClass}>
+                Wishlist
+              </NavLink>
+              <NavLink to="/dashboard/profile" className={navClass}>
+                Profile
+              </NavLink>
+            </>
+          )}
+
+          {/* // Admin Role  */}
+          {user?.role === "admin" && (
+            <>
+              {/* Products Dropdown */}
+              <button
+                onClick={() => setProductMenu(!productMenu)}
+                className="flex items-center justify-between w-full px-4 py-2 rounded
                text-gray-300 hover:bg-primary hover:text-white transition"
-          >
-            <span className="flex items-center gap-2">
-              <FaBox /> Products
-            </span>
-            <FaChevronDown
-              className={`transition ${productMenu ? "rotate-180" : ""}`}
-            />
-          </button>
+              >
+                <span className="flex items-center gap-2">
+                  <FaBox /> Products
+                </span>
+                <FaChevronDown
+                  className={`transition ${productMenu ? "rotate-180" : ""}`}
+                />
+              </button>
 
-          {productMenu && (
-            <div className="ml-4 space-y-1">
-              <NavLink
-                to="/dashboard/products"
-                className={({ isActive }) =>
-                  `block px-4 py-2 rounded text-sm transition
+              {productMenu && (
+                <div className="ml-4 space-y-1">
+                  <NavLink
+                    to="/dashboard/products"
+                    className={({ isActive }) =>
+                      `block px-4 py-2 rounded text-sm transition
            ${
              isActive
                ? "bg-primary text-white"
                : "text-gray-300 hover:bg-primary hover:text-white"
            }`
-                }
-              >
-                All Products
-              </NavLink>
+                    }
+                  >
+                    All Products
+                  </NavLink>
 
-              <NavLink
-                to="/dashboard/products/add"
-                className={({ isActive }) =>
-                  `block px-4 py-2 rounded text-sm transition
+                  <NavLink
+                    to="/dashboard/products/add"
+                    className={({ isActive }) =>
+                      `block px-4 py-2 rounded text-sm transition
            ${
              isActive
                ? "bg-primary text-white"
                : "text-gray-300 hover:bg-primary hover:text-white"
            }`
-                }
-              >
-                Add Product
+                    }
+                  >
+                    Add Product
+                  </NavLink>
+                </div>
+              )}
+              <NavLink to="/dashboard/orders" className={navClass}>
+                <span className="flex items-center gap-2">
+                  <FaShoppingCart /> Orders
+                </span>
               </NavLink>
-            </div>
+              <NavLink to="/dashboard/users" className={navClass}>
+                <span className="flex items-center gap-2">
+                  <FaUsers /> Users
+                </span>
+              </NavLink>
+              <NavLink to="/dashboard/settings" className={navClass}>
+                <span className="flex items-center gap-2">
+                  <FaUsers /> Settings
+                </span>
+              </NavLink>
+            </>
           )}
 
           {/* Orders */}
-          <NavLink to="/dashboard/orders" className={navItemClass}>
+          {/* <NavLink to="/dashboard/orders" className={navItemClass}>
             <FaShoppingCart /> Orders
-          </NavLink>
+          </NavLink> */}
 
           {/* Users */}
-          <NavLink to="/dashboard/users" className={navItemClass}>
+          {/* <NavLink to="/dashboard/users" className={navItemClass}>
             <FaUsers /> Users
-          </NavLink>
+          </NavLink> */}
         </aside>
 
         {/* ================= CONTENT ================= */}

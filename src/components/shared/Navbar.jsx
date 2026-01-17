@@ -103,7 +103,7 @@ const Navbar = () => {
                     : "hover:text-secondary transition"
                 }
               >
-                Contact Us
+                Contact
               </NavLink>
             </li>
             <li>

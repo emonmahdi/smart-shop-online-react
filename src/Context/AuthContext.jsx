@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
     const fakeUser = {
       name: "Demo User",
       email: data.email,
-      role: "user",
+      role: data.email === "admin@gmail.com" ? "admin" : "user",
     };
 
     setUser(fakeUser);

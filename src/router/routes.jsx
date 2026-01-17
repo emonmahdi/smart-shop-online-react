@@ -12,12 +12,12 @@ import OrderSuccess from "../pages/OrderSuccess/OrderSuccess";
 import DashboardLayout from "../layout/DashboardLayout";
 import DashboardHome from "../pages/Dashboard/DashboardHome";
 import Products from "../pages/Dashboard/Products";
-import Orders from "../pages/Dashboard/Orders";
 import Users from "../pages/Dashboard/Users";
 import AddProducts from "../pages/Dashboard/AddProducts";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 import ProtectedRoute from "../routes/ProtectedRoute";
+import Orders from "../pages/Dashboard/admin/Orders";
 
 const routes = createBrowserRouter([
   {
@@ -71,7 +71,7 @@ const routes = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: DashboardHome,
+        element: <DashboardHome />,
       },
       { path: "products", element: <Products /> },
       { path: "orders", element: <Orders /> },
