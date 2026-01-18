@@ -18,6 +18,10 @@ import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 import ProtectedRoute from "../routes/ProtectedRoute";
 import Orders from "../pages/Dashboard/admin/Orders";
+import Settings from "../pages/Dashboard/admin/Settings";
+import MyOrders from "../pages/Dashboard/user/MyOrders";
+import Wishlist from "../pages/Dashboard/user/Wishlist";
+import Profile from "../pages/Dashboard/user/Profile";
 
 const routes = createBrowserRouter([
   {
@@ -75,8 +79,12 @@ const routes = createBrowserRouter([
       },
       { path: "products", element: <Products /> },
       { path: "orders", element: <Orders /> },
+      { path: "settings", element: <Settings /> },
       { path: "users", element: <Users /> },
       { path: "products/add", element: <AddProducts /> },
+      { path: "my-orders", element: <MyOrders /> },
+      { path: "wishlist", element: <Wishlist /> },
+      { path: "profile", element: <Profile /> },
     ],
   },
 ]);
